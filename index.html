@@ -3,26 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Love You - Billie Eilish</title>
+    <title>For You</title>
     <style>
         body {
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            background: url('https://source.unsplash.com/1600x900/?nature,sunset') no-repeat center center fixed;
-            background-size: cover;
             color: white;
-            font-family: Arial, sans-serif;
+            background: url('https://source.unsplash.com/1600x900/?stars,night') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
         .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
             background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
         }
         button {
             background-color: #ff4c4c;
@@ -31,7 +44,6 @@
             border: none;
             cursor: pointer;
             font-size: 18px;
-            margin-top: 10px;
             border-radius: 5px;
         }
         button:hover {
@@ -42,22 +54,24 @@
 <body>
 
     <div class="container">
-        <h1>I Love You - Billie Eilish</h1>
-        <p>Click Play to listen to the music.</p>
-        <iframe id="ytPlayer" width="560" height="315" src="https://www.youtube.com/embed/Dm9Zf1WYQ_A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <br>
-        <button onclick="togglePlay()">Play/Pause</button>
+        <h1>For You 💖</h1>
+        <p>Ini untukmu, seseorang yang spesial ✨</p>
+        <button onclick="toggleMusic()">Play/Pause Music 🎵</button>
     </div>
+
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    </audio>
 
     <script>
         let isPlaying = false;
-        function togglePlay() {
-            const iframe = document.getElementById("ytPlayer");
+        function toggleMusic() {
+            let music = document.getElementById("backgroundMusic");
             if (isPlaying) {
-                iframe.src = "https://www.youtube.com/embed/Dm9Zf1WYQ_A";
+                music.pause();
                 isPlaying = false;
             } else {
-                iframe.src = "https://www.youtube.com/embed/Dm9Zf1WYQ_A?autoplay=1";
+                music.play();
                 isPlaying = true;
             }
         }
